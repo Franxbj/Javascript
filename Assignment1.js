@@ -43,7 +43,7 @@ function calculator(num){
     console.log(percent);
     console.log(area + " is " + percent + "%" + " of " + square  + ".");
 }
-calculator(9);
+calculator(5);
 
 console.log("*****D r E V I I*****");
 
