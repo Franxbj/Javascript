@@ -74,13 +74,18 @@ mixUp('dog', 'dinner');
 
 console.log("***** F I X S T A R T *****");
 
-function fixStart(str){
+/* function fixStart(str){
     var firstCharacter = str.slice(0,1);
-    var newStr = str.replace(firstCharacter, '*');
+    var newStr = str.replaceAll(firstCharacter, '*');
     console.log(newStr);
     //console.log(firstCharacter);
-}
-fixStart('babble');
+} */
+function fixStart(s) {
+    var c = s.charAt(0);
+    return c + s.slice(1).replace(new RegExp(c, 'g'), '*');
+  }
+
+console.log(fixStart('babble'));
 
 console.log("***** V E R B I N G*****");
 
@@ -89,13 +94,13 @@ function verbing(str){
     //console.log(lastThreeCharacters);
 
     if (str.length < 3) {
-        console.log(str + 'ing');
+        console.log(str);
     }
     else if (lastThreeCharacters == 'ing') {
         console.log(str + 'ly');
     }
     else {
-        console.log(str);
+        console.log(str + 'ing');
     }
 }
 
@@ -103,6 +108,13 @@ verbing('swiming');
 
 console.log("***** NOT BAD*****");
 
-function notBad(){
-    
-}
+function notBad(str){
+    var notIndex = str.indexOf('not');
+    var badIndex = str.indexOf('bad');
+    if (notIndex == -1 || badIndex == -1 || badIndex < notIndex) return str;
+    return str.slice(0, notIndex) + 'good' + str.slice(badIndex + 3);
+  }
+console.log(notBad('This dinner is not that bad!'));
+console.log(notBad('This movie is not so good!'));
+console.log(notBad('This dinner is bad!'));
+  
